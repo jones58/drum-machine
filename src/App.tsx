@@ -50,13 +50,16 @@ const sounds = [
 
 function App() {
   const [currentSound, setCurrentSound] = useState("");
+  const [activeKey, setActiveKey] = useState(null as string | null);
 
   const handlePlay = (id: string, key: string) => {
     setCurrentSound(id);
+    setActiveKey(key);
     const audioElement = document.getElementById(
       key
     ) as HTMLAudioElement;
     audioElement.play();
+    setTimeout(() => setActiveKey(null), 200);
   };
 
   const handleKeyPress = (event: KeyboardEvent) => {
@@ -78,7 +81,9 @@ function App() {
           <button
             key={sound.key}
             id={sound.id}
-            className="drum-pad"
+            className={`drum-pad ${
+              activeKey === sound.key ? "active" : ""
+            }`}
             onClick={() => handlePlay(sound.id, sound.key)}
           >
             {sound.key}
@@ -93,4 +98,5 @@ function App() {
     </div>
   );
 }
+
 export default App;

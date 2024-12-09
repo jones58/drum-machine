@@ -1,22 +1,63 @@
-:root {
-  --primary-color: #222222;
-  --secondary-color: #666666;
-  --background-color: #ffffff;
-  --border-color: #dddddd;
-  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
-  --font-size: 16px;
-  --spacing-unit: 1rem;
-  height: 100%;
-}
+#drum-machine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #282c34;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
 
-body {
-  font-family: var(--font-family);
-  font-size: var(--font-size);
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  background-color: var(--background-color);
-  color: var(--primary-color);
-  line-height: 1.5;
+  #display {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    border: 2px solid #61dafb;
+    border-radius: 5px;
+    background-color: #20232a;
+    width: 300px;
+    text-transform: uppercase;
+  }
+
+  .pads-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 320px;
+
+    .drum-pad {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #61dafb;
+      border: none;
+      border-radius: 5px;
+      color: #000;
+      font-size: 1.5rem;
+      height: 100px;
+      width: 100px;
+      box-shadow: 0 4px #1a73e8;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: #21a1f1;
+      }
+
+      &:active {
+        transform: translateY(4px);
+        box-shadow: 0 2px #1a73e8;
+      }
+
+      &.active {
+        transform: translateY(4px);
+        box-shadow: 0 2px #1a73e8;
+      }
+
+      audio {
+        display: none;
+      }
+    }
+  }
 }
