@@ -59,6 +59,17 @@ function App() {
     audioElement.play();
   };
 
+  const handleKeyPress = (event: KeyboardEvent) => {
+    const sound = sounds.find(
+      (i) => i.key === event.key.toUpperCase()
+    );
+    if (sound) {
+      handlePlay(sound.id, sound.key);
+    }
+  };
+
+  document.addEventListener("keydown", handleKeyPress);
+
   return (
     <div id="drum-machine">
       <div id="display">{currentSound || "Play a sound!"}</div>
